@@ -1,0 +1,43 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    int arr[]={1,2,30,-10,-8};
+		System.out.println(" "+max(arr));
+	}
+	public static int max(int arr[]){
+	    int max1,max2,min1,min2;
+	    max1=Integer.MAX_VALUE;
+	    max2=Integer.MAX_VALUE;
+	    min1=Integer.MIN_VALUE;
+	    min2=Integer.MIN_VALUE;
+	    
+	    for(int a:arr){
+	        if(a>max1){
+	            max2=max1;
+	            max1=a;
+	        }
+	        else if(a>max2){
+	            max2=a;
+	        }
+	        if(a>min1){
+	            min2=min1;
+	            min1=a;
+	        }
+	        else if(a>min2){
+	            min2=a;
+	        }
+	    }
+	   int d=min1*min2;
+	   int b=max1*max2;
+	   int c=d>b?d:b;
+	    return c;
+	}
+}
