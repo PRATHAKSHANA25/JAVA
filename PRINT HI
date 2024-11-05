@@ -1,0 +1,24 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter no of rows:");
+        int a=sc.nextInt();
+                System.out.println("Enter no of columns:");
+            int b=sc.nextInt();
+                    System.out.println("Enter no of blocks:");
+                    int c=sc.nextInt();
+                    System.out.println("Enter string: ");
+                    sc.nextLine();
+                    String d=sc.nextLine();
+                    int count=0;
+    for(int k=0;k<c;k++){
+        for(int i=0;i<a;i++){
+           for(int j=0;j<b;j++){
+               System.out.print(d+" ");
+               count++;
+       } System.out.println("");
+    } System.out.println(count);
+    }  
+}
+}
