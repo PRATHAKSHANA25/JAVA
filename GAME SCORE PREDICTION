@@ -1,0 +1,88 @@
+import java.util.*;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random r = new Random();
+        
+        // Input for two teams
+        System.out.println("Enter your Team1 name: ");
+        String team1 = sc.nextLine();
+        System.out.println("Enter your Team2 name: ");
+        String team2 = sc.nextLine();
+        
+        // Random answers for both teams
+        int ans1 = r.nextInt(300) + 1; // Random number between 1 and 300
+        int ans2 = r.nextInt(300) + 1; // Random number between 1 and 300
+        
+        // Hints for Team1
+        String[] hint1 = new String[3];
+        hint1[0] = ans1 > 150 ? "It is greater than 150" : "It is less than 150";
+        hint1[1] = ans1 % 2 == 0 ? "It is an even number" : "It is an odd number";
+        hint1[2] = ans1 % 5 == 0 ? "It is divisible by 5" : "It is not divisible by 5";
+        
+        // Hints for Team2
+        String[] hint2 = new String[3];
+        hint2[0] = ans2 > 150 ? "It is greater than 150" : "It is less than 150";
+        hint2[1] = ans2 % 2 == 0 ? "It is an even number" : "It is an odd number";
+        hint2[2] = ans2 % 5 == 0 ? "It is divisible by 5" : "It is not divisible by 5";
+        
+        // For Team 1: Guess the number
+        System.out.println("Do you want a hint for " + team1 + "? (y/n) ");
+        String ch = sc.nextLine();
+        
+        int count1 = 0;
+        while (ch.equalsIgnoreCase("y") && count1 < 3) {
+            System.out.println("Hint " + (count1 + 1) + ": " + hint1[count1]);
+            count1++;
+            if (count1 < 3) {
+                System.out.println("Do you want another hint? (y/n) ");
+                ch = sc.nextLine();
+            }
+        }
+        
+        System.out.println("Predict the answer for " + team1 + ": ");
+        int guess1 = sc.nextInt();
+        sc.nextLine();  // Consume the newline character left by nextInt()
+        
+        // For Team 2: Guess the number
+        System.out.println("Do you want a hint for " + team2 + "? (y/n) ");
+        String ch1 = sc.nextLine();
+        
+        int count2 = 0;
+        while (ch1.equalsIgnoreCase("y") && count2 < 3) {
+            System.out.println("Hint " + (count2 + 1) + ": " + hint2[count2]);
+            count2++;
+            if (count2 < 3) {
+                System.out.println("Do you want another hint? (y/n) ");
+                ch1 = sc.nextLine();
+            }
+        }
+        
+        System.out.println("Predict the answer for " + team2 + ": ");
+        int guess2 = sc.nextInt();
+        
+        // Calculating scores
+        int score1 = 300 - Math.abs(ans1 - guess1);  // Using the difference between answer and guess
+        int score2 = 300 - Math.abs(ans2 - guess2);  // Using the difference between answer and guess
+        
+        System.out.println("--------------------------------");
+        System.out.println(team1 + "'s actual answer: " + ans1);
+        System.out.println(team1 + "'s predicted answer: " + guess1);
+        System.out.println(team1 + "'s score: " + score1);
+        
+        System.out.println("--------------------------------");
+        System.out.println(team2 + "'s actual answer: " + ans2);
+        System.out.println(team2 + "'s predicted answer: " + guess2);
+        System.out.println(team2 + "'s score: " + score2);
+        
+        System.out.println("--------------------------------");
+        if (score1 > score2) {
+            System.out.println(team1 + " wins!");
+        } else if (score1 < score2) {
+            System.out.println(team2 + " wins!");
+        } else {
+            System.out.println("It's a tie!");
+        }
+    }
+}
