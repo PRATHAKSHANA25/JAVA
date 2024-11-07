@@ -1,0 +1,48 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Graph g=new Graph(6);
+        g.addEdge(1,2);        
+        g.addEdge(0,3);
+        g.addEdge(0,4);
+        g.addEdge(1,5);
+        g.addEdge(2,5);
+        g.addEdge(3,4);
+        g.bfs(0);
+    }
+}
+class Graph{
+    int vertices;
+    LinkedList<Integer>[] adjList;
+    Graph(int vertices){
+        this.vertices=vertices;
+       adjList=new LinkedList[vertices];
+        for(int i=0;i<vertices;i++){
+           adjList[i]=new LinkedList<>();
+    }}
+    public void addEdge(int a,int b){
+        adjList[a].add(b);
+        adjList[b].add(a);
+    }
+    public void bfs(int start){
+        boolean[] visited=new boolean[vertices];
+        Queue<Integer> q=new LinkedList<>();
+        visited[start]=true;
+        q.add(start);
+        System.out.println("BFS from: "+start);
+        while(!q.isEmpty()){
+            int vertex=q.poll();
+            System.out.println(" "+vertex);
+            for(int a:adjList[vertex]){
+                if(!visited[a]){
+                    visited[a]=true;
+                    q.add(a);
+                }
+            }
+        }
+    }
+    
+    
+}
