@@ -1,0 +1,40 @@
+
+import java.util.*;
+
+public class Main {
+    public static boolean isRound(int n) {
+        Set<Integer> visited = new HashSet<>();
+        visited.add(n);
+        
+        while (n != 1) {
+            n = sumOfDigitsSquared(n);
+            if (visited.contains(n)) {
+                return false;
+            }
+            visited.add(n);
+        }
+        return true;
+    }
+
+    public static int sumOfDigitsSquared(int num) {
+        int sum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            sum += digit * digit;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        
+        if (isRound(number)) {
+            System.out.println("True");
+        } else {
+            System.out.println("False");
+        }
+    }
+}
