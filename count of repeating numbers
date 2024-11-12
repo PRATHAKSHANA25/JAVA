@@ -1,0 +1,28 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        HashMap<Character,Integer> freq=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        for(char ch:str.toCharArray()){
+            freq.put(ch,freq.getOrDefault(ch,0)+1);
+        }
+        int count=0;
+        for(int b:freq.values()){
+            if(b>1){
+            count++;
+        }
+        }
+        System.out.println(count);
+    }
+}
