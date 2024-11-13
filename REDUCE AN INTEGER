@@ -1,0 +1,24 @@
+ ns until n becomes 0.
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 9;
+        cal(n);
+    }
+
+    public static void cal(int n) {
+        int ans = 0;
+
+        while (n > 0) {
+            if (n % 2 == 0) {
+                n = n / 2; // Divide by 2 if n is even
+            } else {
+                n = n - 1; // Subtract 1 if n is odd
+                ans++;
+            }
+        }
+
+        System.out.println(ans);
+    }
+}
