@@ -1,0 +1,86 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Tree t = new Tree();
+        t.insert(100);
+        t.insert(70);
+        t.insert(110);
+        t.insert(11);
+        t.insert(85);
+        t.insert(105);
+        t.insert(123);
+        t.insert(7);
+        t.insert(93);
+        t.insert(18);
+        t.insert(114);
+        t.insert(115);
+        t.insert(116);
+        System.out.println("Pre order:");
+        t.pre(t.root);
+        System.out.println("\nPost order:");
+        t.post(t.root);
+    }
+}
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node(int val){
+        this.data=val;
+        this.left=null;
+        this.right=null;
+    }
+}
+class Tree{
+    Node root=null;
+    void insert(int val){
+        Node ab=new Node(val);
+        if(root==null){
+            root=ab;
+            
+        }
+        else{
+            Node temp=root;
+            while(true){
+                if(temp.data>ab.data){
+                    if(temp.left==null){
+                    temp.left=ab;
+                    break;
+                    }
+                    else{
+                        temp=temp.left;
+                    }
+                }
+                 if(temp.data<ab.data){
+                    if(temp.right==null){
+                    temp.right=ab;
+                    break;
+                    }
+                    else{
+                        temp=temp.right;
+                    }
+                }
+            }
+        }
+    }
+    public void pre(Node root){
+        if(root!=null){
+            
+            System.out.print(root.data+" ");
+            pre(root.left);
+            pre(root.right);
+        }
+    }
+
+public void post(Node root){
+        if(root!=null){
+            
+            post(root.left);
+            post(root.right);
+            System.out.print(root.data+" ");
+        }
+    }
+}
+
