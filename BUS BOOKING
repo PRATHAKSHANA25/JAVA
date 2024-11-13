@@ -1,0 +1,116 @@
+package TRAVEL;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+public class BOOKING {
+	String name;
+	int busno;
+	Date date;
+	BOOKING(Scanner io)
+	{
+		System.out.println("Enter Passenger name: ");
+		name=io.next();
+		System.out.println("Enter bus no: ");
+		busno=io.nextInt();
+		System.out.println("Enter date (dd-mm-yyyy): ");
+		String n=io.next();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("DD-MM-YYYY");
+		try
+		{
+			date=sdf.parse(n);
+		}
+		catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public boolean isavailable(ArrayList<BUS> buses, ArrayList<BOOKING> bookings)
+	{
+		int booked=0;
+		int capacity=0;
+		for(BUS b : buses) {
+			if(b.get_bno() == busno) {
+				capacity = b.get_capacity();
+			}
+		}
+		for(BOOKING a : bookings)
+		{
+			if(a.busno == busno && a.date.equals(date)) 
+			{
+				booked++;
+			}
+		}
+		return booked<capacity;
+	}
+	
+}
+package TRAVEL;
+
+import java.util.*;
+
+public class MASTER {
+	public static void main(String[] args) {
+		ArrayList<BUS> buses = new ArrayList<>();
+		ArrayList<BOOKING> bookings = new ArrayList<>();
+		buses.add(new BUS(1,true,3));
+		buses.add(new BUS(2,true,4));
+		buses.add(new BUS(3,true,2));
+		for(BUS b : buses)
+		{
+			b.display();
+		}
+		Scanner io = new Scanner(System.in);
+		int c = 1;
+		while(c == 1) 
+		{
+			System.out.println("Enter 1 to book, 2 to exit");
+			c=io.nextInt();
+			BOOKING book = new BOOKING(io);
+			if(book.isavailable(buses, bookings))
+			{
+				System.out.println("Confirmed your booking");
+				bookings.add(book);
+			}
+			else
+			{
+				System.out.println("Sorry.. Seats are filled. try another bus");
+			}
+		}
+		io.close();
+		
+	}
+}
+package TRAVEL;
+
+public class BUS {
+	private int bno;
+	private boolean ac;
+	private int cap;
+	
+	BUS(int a, boolean b, int c)
+	{
+		this.bno=a;
+		this.ac=b;
+		this.cap=c;		
+	}
+	public int get_bno() 
+	{
+		return bno;
+	}
+	public boolean get_ac() 
+	{
+		return ac;
+	}
+	public int get_capacity() 
+	{
+		return cap;
+	}
+	public void display()
+	{
+		System.out.println("-----------------------");
+		System.out.println("Bus no. : "+bno);
+		System.out.println("AC ?? "+ac);
+		System.out.println("Capacity : "+cap);
+	}
+}
