@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+        for(int i = 11; i <= 99; i++){
+            boolean isPrime = true; 
+            for(int j = 2; j < i; j++){
+                if(i % j == 0){ 
+                    isPrime = false;
+                    break; 
+                }
+            }
+
+            
+            if(isPrime && (i / 10) % 2 != 0) {
+                int sum = 0;
+                int temp = i; 
+                while(temp != 0){
+                    sum += temp % 10;
+                    temp = temp / 10;
+                }
+                if(sum % 2 == 0){
+                    System.out.println(i);
+                }
+            }
+        }
+    }
+}
