@@ -1,0 +1,22 @@
+#op:2
+    #3 4
+       #4 5 6
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		
+		
+		    for(int t=1;t<=n;t++){
+		        for(int m=1;m<=t;m++){
+		               
+		                System.out.print(t+m);
+		            
+		        } System.out.println();
+		    }
+		
+		
+	}
+}
