@@ -1,0 +1,25 @@
+//armstrong number with variable length
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int num=sc.nextInt();
+		int orgnum=num;
+		int r=0;
+		int s=0;
+		int digits = String.valueOf(num).length();
+        while(num!=0){
+            r=num%10;
+            num=num/10;
+            s+=Math.pow(r,digits);
+            
+        } if(s==orgnum){
+            System.out.println("YES");
+        }
+        else{
+            System.out.println("NO");
+        }
+    }
+
+	}
