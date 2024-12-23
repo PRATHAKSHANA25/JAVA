@@ -1,0 +1,35 @@
+//scalar matrix
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int i=sc.nextInt();
+		int j=sc.nextInt();
+		int arr[][]=new int[i][j];
+		for(int m=0;m<i;m++){
+		    for(int n=0;n<j;n++){
+		        arr[m][m]=sc.nextInt();
+		    }
+		}
+		if(scalarmatrix(i,j,arr)){
+		    System.out.println("YES");
+		}
+		else{
+		    System.out.println("NO");
+		}
+	}
+		public static boolean scalarmatrix(int i,int j,int arr[][]){
+		    int diagonal=arr[0][0];
+		for(int m=0;m<i;m++){
+		    for(int n=0;n<j;n++){
+		        if(i!=j) return false;
+		        if(m!=n && arr[m][n]!=0){
+		            return false;
+		        }
+		    }
+		}
+		return true;
+
+	}
+}
