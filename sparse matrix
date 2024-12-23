@@ -1,0 +1,40 @@
+//sparse matrix-->most elemnts zero
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int i=sc.nextInt();
+		int j=sc.nextInt();
+		int arr[][]=new int[i][j];
+		for(int m=0;m<i;m++){
+		    for(int n=0;n<j;n++){
+		        arr[m][n]=sc.nextInt();
+		    }
+		}
+		if(sparsematrix(i,j,arr)){
+		    System.out.println("YES");
+		}
+		else{
+		    System.out.println("NO");
+		}
+	}
+		public static boolean sparsematrix(int i,int j,int arr[][]){
+		   int count=0;
+		   int count1=0;
+		for(int m=0;m<i;m++){
+		    for(int n=0;n<j;n++){
+		        if(arr[m][n]==0){
+		            count++;
+		        }
+		        else{
+		            count1++;
+		        }
+		}
+		}
+		if(count>count1){
+		    return true;
+		}
+		return false;
+	}
+}
